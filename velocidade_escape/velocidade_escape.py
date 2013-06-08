@@ -6,7 +6,8 @@ import math
 
 ## background color
 scene.background = (1,1,1)
-
+scene.heigth = 500
+scene.width = 500
 print "\n\n"
 
 
@@ -29,12 +30,12 @@ planeta.massa = 4*math.pi*planeta.radius**3/3*planeta.densidade #kg
 bola = sphere(color=color.red, radius = planeta.radius/20, make_trail = True)
 
 # altura inicial do projétil h = x (medido a partir do solo)
-h = 0.001 # percentagem do raio do planeta
+h = 0.01 # percentagem do raio do planeta
 bola.pos.y = planeta.radius*(1+h/100) + bola.radius
 
 # caraterísticas do projétil
 bola.massa = 1 # kg
-bola.magnitude_velocidade = 600 # m/s
+bola.magnitude_velocidade = 9000 # m/s
 bola.angulo_graus = 0 # ângulo medido com a horizontal (em graus)
 
 # converte o ângulo em radianos
@@ -50,6 +51,8 @@ G = 6.67e-11
 dt = 1 #s
 t = 0
 
+janela = (planeta.radius+bola.pos.y) * 1.2
+scene.range = (janela, janela, janela)
 
 # starts the animation
 while True:
