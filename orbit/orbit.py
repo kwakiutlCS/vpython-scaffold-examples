@@ -8,6 +8,14 @@ scene.autoscale = False
 scene.range = (1e8, 1e8, 1e8)
 print "\n\n"
 
+def getPotencialEnergy():
+    return -G*planet.mass*moon.mass/moon.pos.mag
+
+def getKineticEnergy():
+    return 1/2*moon.mass*moon.velocity.mag2
+
+def getMechanicEnergy():
+    return getPotencialEnergy()+getKineticEnergy()
 
 
 ##################################################################
@@ -27,12 +35,13 @@ planet.mass = 6e24
 
 # moon characteristics
 moon.mass = 1e23
-moon.velocity = vector(0,1300,0)
+moon.velocity = vector(0,2400,0)
 
+moon.trail = curve(color=moon.color)
 
 G = 6.67e-11
 
-dt = 50
+dt = 100
 
 # starts the animation
 while True:
@@ -46,5 +55,11 @@ while True:
     moon.pos += moon.velocity*dt
     
     moon.velocity += moon.accel*dt
+
+    if moon.pos.mag < moon.radius+planet.radius:
+        break
     
+    moon.trail.append(moon.pos)
+    print getMechanicEnergy()
+
 
