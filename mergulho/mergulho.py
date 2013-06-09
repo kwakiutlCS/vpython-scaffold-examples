@@ -11,10 +11,10 @@ scene.background = (1,1,1)
 scene.autoscale = False
 scene.range = (50,50,50)
 scene.userspin = False
-scene.userzoom = False
+#scene.userzoom = False
 scene.width = 600
-scene. height = 600
-
+scene.height = 600
+scene.forward = (0,-0.007,-1)
 scene.title = "Mergulho"
 
 print "\n\n"
@@ -38,7 +38,7 @@ liquido.densidade = 1 #g/cm³
 
 
 # altura inicial da bola
-bola.pos.y = -45 # m
+bola.pos.y = 45 # m
 # velocidade inicial da bola
 bola.velocidade = vector(0,0,0) # m/s
 # massa da bola
@@ -59,6 +59,7 @@ dt = 0.01 # incremento ao cronómetro
 ##################################################################
 
 while True:
+    
     # frames por segundo
     rate(60)
     

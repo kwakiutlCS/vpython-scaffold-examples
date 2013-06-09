@@ -7,7 +7,9 @@ import math
 
 ## cor de fundo
 scene.background = (1,1,1)
-
+scene.width = 600
+scene.height = 600
+scene.title = "Movimento Simples"
 scene.autoscale = False
 scene.range = (30,30,30)
 
@@ -28,11 +30,11 @@ print "\n\n"
 ##################################################################
 
 # corpo, escolher a posição inicial como pos = (0,0,0)
-corpo = sphere(pos = (0,0,0), color = color.red, make_trail=True)
+corpo = sphere(pos = (0,0,0), color = color.red, make_trail=True, trail_type = "points", interval = 50, retain = 20)
 
 # caraterísticas do corpo
 corpo.velocidade = vector(5,0,0) #m/s
-corpo.aceleracao = vector(2,0,0) #m/s^2
+corpo.aceleracao = vector(-2,0,0) #m/s^2
 
 
 # cronómetro
@@ -51,8 +53,8 @@ while True:
     rate(30)
    
     # atualiza a posição do corpo
-    corpo.pos += vector(0,0,0)
+    corpo.pos += corpo.velocidade*dt
     
-    
+    corpo.velocidade += corpo.aceleracao*dt
 
     
